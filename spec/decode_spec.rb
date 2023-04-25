@@ -16,11 +16,11 @@ RSpec.describe Decode do
   end
 
   it 'has attributes' do
-    expect(decode.bitlink).to eq(decode_data[:bitlink])
-    expect(decode.user_agent).to eq(decode_data[:user_agent])
-    expect(decode.timestamp).to eq(decode_data[:timestamp])
-    expect(decode.referrer).to eq(decode_data[:referrer])
-    expect(decode.remote_ip).to eq(decode_data[:remote_ip])
+    expect(decode.bitlink).to eq(decode_data["bitlink"])
+    expect(decode.user_agent).to eq(decode_data["user_agent"])
+    expect(decode.timestamp).to eq(decode_data["timestamp"])
+    expect(decode.referrer).to eq(decode_data["referrer"])
+    expect(decode.remote_ip).to eq(decode_data["remote_ip"])
   end
 
   it 'only has the attributes listed above' do

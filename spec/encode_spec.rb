@@ -20,10 +20,11 @@ RSpec.describe Encode do
       expect(encode.long_url).to eq(encode_data[:long_url])
       expect(encode.domain).to eq(encode_data[:domain])
       expect(encode.hash).to eq(encode_data[:hash])
+      expect(encode.bitlink).to eq("http://bit.ly/#{encode_data[:hash]}")
     end
 
     it 'only has the attributes listed above' do
-      expect(encode.instance_variables).to eq(%i[@user_id @long_url @domain @hash])
+      expect(encode.instance_variables).to eq(%i[@user_id @long_url @domain @hash @bitlink])
     end
   end
 end
