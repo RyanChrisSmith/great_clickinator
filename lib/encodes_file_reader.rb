@@ -1,5 +1,5 @@
 require 'csv'
-require 'encode'
+require_relative 'encode'
 
 class EncodesFileReader
   attr_reader :encodes
