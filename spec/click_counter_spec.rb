@@ -24,19 +24,19 @@ RSpec.describe ClickCounter do
     end
 
     it 'can count the truncated data correctly by year' do
-      expect(clicks_truncated.count(2021)).to eq([{ 'https://github.com/' => 1, 'https://google.com/' => 0, 'https://linkedin.com/' => 0, 'https://reddit.com/' => 2, 'https://twitter.com/' => 1, 'https://youtube.com/' => 1 }])
+      expect(clicks_truncated.count(2021)).to eq([{ 'https://reddit.com/' => 2 }, { 'https://github.com/' => 1 }, { 'https://twitter.com/' => 1 }, { 'https://youtube.com/' => 1 }, { 'https://google.com/' => 0 }, { 'https://linkedin.com/' => 0 }])
     end
 
     it 'can count the truncated data correctly by a different year' do
-      expect(clicks_truncated.count(2020)).to eq([{ 'https://github.com/' => 3, 'https://google.com/' => 0, 'https://linkedin.com/' => 3, 'https://reddit.com/' => 0, 'https://twitter.com/' => 1, 'https://youtube.com/' => 2 }])
+      expect(clicks_truncated.count(2020)).to eq([{ 'https://github.com/' => 3 }, { 'https://linkedin.com/' => 3 }, { 'https://youtube.com/' => 2 }, { 'https://twitter.com/' => 1 }, { 'https://google.com/' => 0 }, { 'https://reddit.com/' => 0 }])
     end
 
     it 'can count full data set clicks by year' do
-      expect(clicks.count(2021)).to eq([{ 'https://youtube.com/' => 557, 'https://twitter.com/' => 512, 'https://reddit.com/' => 510, 'https://github.com/' => 497, 'https://linkedin.com/' => 496, 'https://google.com/' => 492 }])
+      expect(clicks.count(2021)).to eq([{ 'https://youtube.com/' => 557 }, { 'https://twitter.com/' => 512 }, { 'https://reddit.com/' => 510 }, { 'https://github.com/' => 497 }, { 'https://linkedin.com/' => 496 }, { 'https://google.com/' => 492 }])
     end
 
     it 'can count full data set clicks by a different year' do
-      expect(clicks.count(2020)).to eq([{ 'https://youtube.com/' => 481, 'https://reddit.com/' => 464, 'https://google.com/' => 450, 'https://linkedin.com/' => 446, 'https://github.com/' => 420, 'https://twitter.com/' => 409 }])
+      expect(clicks.count(2020)).to eq([{ 'https://youtube.com/' => 481 }, { 'https://reddit.com/' => 464 }, { 'https://google.com/' => 450 }, { 'https://linkedin.com/' => 446 }, { 'https://github.com/' => 420 }, { 'https://twitter.com/' => 409 }])
     end
   end
 end
