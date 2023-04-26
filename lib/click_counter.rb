@@ -1,13 +1,13 @@
-require 'decodes_file_reader'
-require 'encodes_file_reader'
+require 'decodes_file'
+require 'encodes_file'
 
 class ClickCounter
   attr_reader :clicks,
               :links
 
   def initialize(encodes_file_path, decodes_file_path)
-    @links = EncodesFileReader.new(encodes_file_path).links
-    @clicks = DecodesFileReader.new(decodes_file_path).clicks
+    @links = EncodesFile.new(encodes_file_path).links
+    @clicks = DecodesFile.new(decodes_file_path).clicks
   end
 
   def count(year)

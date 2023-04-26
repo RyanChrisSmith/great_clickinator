@@ -1,13 +1,13 @@
 require 'spec_helper'
-require './lib/decodes_file_reader'
+require './lib/decodes_file'
 
-RSpec.describe DecodesFileReader do 
-  let(:decodes_file) { DecodesFileReader.new('./data/decodes.json') }
+RSpec.describe DecodesFile do
+  let(:decodes_file) { DecodesFile.new('./data/decodes.json') }
   let(:json) { File.read('./data/decodes.json') }
 
   context 'when initialized' do 
     it 'exists' do
-      expect(decodes_file).to be_a(DecodesFileReader)
+      expect(decodes_file).to be_a(DecodesFile)
     end
 
     it 'has attributes' do
@@ -26,7 +26,7 @@ RSpec.describe DecodesFileReader do
 
   context 'when file paths are incorrect' do
     it 'should raise an error if the file path is incorrect' do
-      expect { DecodesFileReader.new('./data/nonexistent.json') }.to raise_error(Errno::ENOENT)
+      expect { DecodesFile.new('./data/nonexistent.json') }.to raise_error(Errno::ENOENT)
     end
   end
 end
