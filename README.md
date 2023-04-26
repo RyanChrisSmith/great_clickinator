@@ -64,3 +64,53 @@
 
 ## Design Decisions
 </u>
+- The following order of files is to help the explanation loosely follow the data flow
+
+### _File_reader_
+
+  - This class is responsible for reading data from a file. It accepts a file path as a parameter, checks the file extension, and reads the data from the file using the appropriate method (CSV or JSON). The read method returns the parsed data.
+
+  - The design decision to separate the file reading logic into its own class allows for better separation of concerns and improves code modularity. It also allows for easier testing of the file reading logic as it can be mocked or stubbed in tests.
+
+  - If there were ever a situation that another file type needed to be added, it would be simple to add the method here
+
+### _Decodes_file_
+
+  - This class is responsible for parsing the data from a file containing click data and converting it into an array of Click objects. It uses the FileReader class to read the data from the file and then maps each row of data to a new Click object.
+
+  - By creating a separate DecodesFile class, the code achieves a better separation of concerns by ensuring that the class is solely responsible for reading and parsing the decoding file, and for generating the appropriate Click objects. This design also makes the code more modular, as each class is responsible for a specific aspect of the codebase.
+
+  - Moreover, separating the decoding logic into its own class allows for easier testing, as the class can be isolated from the rest of the code and tested independently. It also facilitates easier maintenance of the code, as any changes to the decoding logic can be made in one place, rather than being scattered throughout the codebase.
+
+### _Encodes_file_
+
+  - This class is responsible for parsing the data from a file containing link data and converting it into an array of Link objects. It uses the FileReader class to read the data from the file and then maps each row of data to a new Link object.
+
+  - The design decision to create a separate EncodesFile class provides better separation of concerns and improves code modularity. It also allows for easier testing and easier maintenance of the code.
+
+### _Click_
+
+  - This class represents a single click on a link. It initializes with a hash of data, which is parsed and stored as instance variables. The year attribute is parsed from the timestamp attribute using the DateTime.strptime method.
+
+  - Using a separate Click class follows the OOP principles of encapsulation and single responsibility, which provides a well-organized and object-oriented approach to the code. By creating a single instance of a Click object for each click event, the relevant data is encapsulated into a single entity, making the code simpler and more manageable. Additionally, this design decision promotes easier manipulation and filtering of the click data, which further improves the maintainability of the code.
+
+### _Link_
+
+  - This class represents a single link. It initializes with a hash of data, which is parsed and stored as instance variables. The bitlink attribute is created from the hash attribute and formatted as a bitly link.
+
+  - Creating a distinct Link class, much like the Click class, provides a structured and object-oriented approach to the code by separating the link data into a dedicated entity. The use of a Link object allows for encapsulating all the relevant data related to a link in a single instance, making the code more intuitive and manageable.
+
+### _Click Counter_
+
+  - This class is responsible for counting the number of clicks for each link in a given year. It initializes with file paths for a file containing link data and a file containing click data. It uses the EncodesFile and DecodesFile classes to parse the link and click data, respectively. The count method filters the clicks by year and link and returns a sorted array of objects containing the long_url and corresponding counts.
+  - This class is designed to count the number of clicks for each long URL in a given year, based on the data provided in two input files: one that contains information about links and another that contains information about clicks on those links.
+  - Some of the more complicated business logic happens within this class so it happens to be the longest. The logic was left in this class, rather than abstracted out, as there is really only one major method within. If there were a larger variety of ways to count the clicks (i.e. by_website, by_day, etc) it would make sense to start to make more methods and then most likely abstract out to a factory style refactor having a class that selects the class and within that class has the count/sort method necessary
+
+<u>
+
+## Extensions
+</u>
+
+- Additional `count` methods by different parameters than year (website, day, time, etc)
+- Different file input types (yaml, xml, etc.)
+- Writing a CSV for output to have a record
