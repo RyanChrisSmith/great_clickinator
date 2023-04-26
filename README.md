@@ -8,6 +8,15 @@
  - This project used the ![Ruby](https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white) `VERSION 3.1.2` and was developed/tested on ![Mac](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white) `VENTURA 13.2.1`
  - Go ahead, be curious and click on the links for the many [pull requests](https://github.com/RyanChrisSmith/great_clickinator/pulls?q=is%3Apr+is%3Aclosed) with a *PR template* and an extensive [commit history](https://github.com/RyanChrisSmith/great_clickinator/commits/main) to keep track of all changes
 
+  - GEMS
+    - [Pry](https://github.com/pry/pry) - provides a more powerful and interactive REPL (Read-Eval-Print Loop) console for debugging and exploring Ruby code.
+
+    - [Rubocop](https://github.com/rubocop/rubocop) - provides a static code analyzer to enforce consistent coding style, best practices, and detect potential issues in a Ruby codebase.
+
+    - [RSpec](https://github.com/rspec) - framework for writing and executing tests to ensure the expected behavior of a Ruby codebase.
+
+    - [Simplecov](https://github.com/simplecov-ruby/simplecov) - provides code coverage analysis for a Ruby codebase.
+
 
 <u>
 
@@ -43,13 +52,11 @@
 
 - This program was created to dynamically take in any year you would like to input
 - If the year does not exist in the data set, the counts will return as 0
-- Run `$ ruby runner.rb` and after the `.rb` in the command input the year you would like to see results for
+- Run `$ ruby runner.rb` and after the `.rb` in the command input the `<year>` you would like to see results for
   - for example `$ ruby runner.rb 2021` will return the results:
   ```
   [{"https://youtube.com/"=>557}, {"https://twitter.com/"=>512}, {"https://reddit.com/"=>510}, {"https://github.com/"=>497}, {"https://linkedin.com/"=>496}, {"https://google.com/"=>492}]
   ```
-- Note that the results are sorted in descending click count order
-
 
 
 

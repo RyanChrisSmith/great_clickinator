@@ -61,6 +61,7 @@ PLATFORMS
 DEPENDENCIES
   pry
   rspec
+  rubocop
   rubocop-rspec
   simplecov
 
