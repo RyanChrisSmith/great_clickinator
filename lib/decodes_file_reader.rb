@@ -1,14 +1,14 @@
 require 'json'
-require_relative 'decode'
+require_relative 'click'
 
 class DecodesFileReader
-  attr_reader :decodes
+  attr_reader :clicks
 
   def initialize(file_path)
-    @decodes = []
+    @clicks = []
     json_data = File.read(file_path)
-    JSON.parse(json_data).each do |data|
-      @decodes << Decode.new(data)
+    JSON.parse(json_data).each do |click_data|
+      @clicks << Click.new(click_data)
     end
   end
 end
