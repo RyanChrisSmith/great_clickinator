@@ -1,5 +1,5 @@
-require 'file_reader'
-require 'link'
+require_relative 'file_reader'
+require_relative 'link'
 
 class EncodesFile
   attr_reader :links

@@ -1,5 +1,5 @@
-require 'decodes_file'
-require 'encodes_file'
+require_relative 'decodes_file'
+require_relative 'encodes_file'
 
 class ClickCounter
   attr_reader :clicks,
@@ -20,7 +20,10 @@ class ClickCounter
 
     sorted_clicks = clicks_hash.sort_by { |_url, count| -count }.to_h
 
-    [sorted_clicks]
+    sorted_objects = sorted_clicks.map do |url, count|
+      { url => count }
+    end
+    sorted_objects
   end
 
   private

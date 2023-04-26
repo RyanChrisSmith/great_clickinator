@@ -1,5 +1,5 @@
-require 'file_reader'
-require 'click'
+require_relative 'file_reader'
+require_relative 'click'
 
 class DecodesFile
   attr_reader :clicks
