@@ -2,26 +2,31 @@ require 'decodes_file_reader'
 require 'encodes_file_reader'
 
 class ClickCounter
-  attr_reader :encodes,
-              :decodes
+  attr_reader :clicks,
+              :links
 
   def initialize(encodes_file_path, decodes_file_path)
-    @encodes = EncodesFileReader.new(encodes_file_path).encodes
-    @decodes = DecodesFileReader.new(decodes_file_path).decodes
+    @links = EncodesFileReader.new(encodes_file_path).links
+    @clicks = DecodesFileReader.new(decodes_file_path).clicks
   end
 
   def count(year)
     clicks_hash = {}
 
-    encodes.each do |encode|
-      decodes_filtered = decodes.select { |decode| decode.year == year && decode.bitlink == encode.bitlink }
-      click_count = decodes_filtered.size
-
-      clicks_hash[encode.long_url] = click_count
+    links.each do |link|
+      click_count = count_clicks_for_link(link.bitlink, year)
+      clicks_hash[link.long_url] = click_count
     end
 
     sorted_clicks = clicks_hash.sort_by { |_url, count| -count }.to_h
 
     [sorted_clicks]
+  end
+
+  private
+
+  def count_clicks_for_link(bitlink, year)
+    links_filtered = clicks.select { |link| link.year == year && link.bitlink == bitlink }
+    links_filtered.size
   end
 end

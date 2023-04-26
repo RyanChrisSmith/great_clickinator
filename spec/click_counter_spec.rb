@@ -12,8 +12,8 @@ RSpec.describe ClickCounter do
     end
 
     it 'has attributes' do
-      expect(clicks.encodes).to be_an(Array)
-      expect(clicks.decodes).to be_an(Array)
+      expect(clicks.links).to be_an(Array)
+      expect(clicks.clicks).to be_an(Array)
     end
   end
 
