@@ -1,13 +1,13 @@
 require 'spec_helper'
-require './lib/encodes_file_reader'
+require './lib/encodes_file'
 
-RSpec.describe EncodesFileReader do
-  let(:encodes_file) { EncodesFileReader.new('./data/encodes.csv') }
+RSpec.describe EncodesFile do
+  let(:encodes_file) { EncodesFile.new('./data/encodes.csv') }
   let(:rows) { CSV.read('./data/encodes.csv', headers: true, header_converters: :symbol) }
 
   context 'when initialized' do
     it 'exists' do
-      expect(encodes_file).to be_a(EncodesFileReader)
+      expect(encodes_file).to be_a(EncodesFile)
     end
 
     it 'has attributes' do
@@ -31,7 +31,7 @@ RSpec.describe EncodesFileReader do
 
   context 'when file paths are incorrect' do
     it 'should raise an error if the file path is incorrect' do
-      expect { EncodesFileReader.new('./data/nonexistent.csv') }.to raise_error(Errno::ENOENT)
+      expect { EncodesFile.new('./data/nonexistent.csv') }.to raise_error(Errno::ENOENT)
     end
   end
 end
