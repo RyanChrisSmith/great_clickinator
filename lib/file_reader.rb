@@ -1,4 +1,5 @@
 require 'csv'
+require 'json'
 
 class FileReader 
   def initialize(file_path)
