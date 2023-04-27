@@ -42,6 +42,8 @@
 
   - Run `$ rspec` or `$ rspec spec` to run the whole test suite at once
     - There will be 27 passing tests and 0 failures
+    - You may also notice a coverage report after the passing tests
+      - It is essentially pointing out that the rspec tests are testing all LOC (lines of code) in the files. This will show 100% in this case.
   - If you would like to run any of the specific files just follow the file structure
     - for example if I want to run just the tests for the file reader it would be `$ rspec spec/file_reader_spec.rb`
 
@@ -52,7 +54,7 @@
 
 - This program was created to dynamically take in any year you would like to input
 - If the year does not exist in the data set, the counts will return as 0
-- Run `$ ruby runner.rb` and after the `.rb` in the command input the `<year>` you would like to see results for
+- Run `$ ruby runner.rb <year>`, in the command input the actual year you want instead of `<year>`
   - for example `$ ruby runner.rb 2021` will return the results:
   ```
   [{"https://youtube.com/"=>557}, {"https://twitter.com/"=>512}, {"https://reddit.com/"=>510}, {"https://github.com/"=>497}, {"https://linkedin.com/"=>496}, {"https://google.com/"=>492}]
@@ -66,7 +68,7 @@
 </u>
 - The following order of files is to help the explanation loosely follow the data flow
 
-### _File_reader_
+### _File Reader_
 
   - This class is responsible for reading data from a file. It accepts a file path as a parameter, checks the file extension, and reads the data from the file using the appropriate method (CSV or JSON). The read method returns the parsed data.
 
@@ -74,7 +76,7 @@
 
   - If there were ever a situation that another file type needed to be added, it would be simple to add the method here
 
-### _Decodes_file_
+### _Decodes File_
 
   - This class is responsible for parsing the data from a file containing click data and converting it into an array of Click objects. It uses the FileReader class to read the data from the file and then maps each row of data to a new Click object.
 
@@ -82,7 +84,7 @@
 
   - Moreover, separating the decoding logic into its own class allows for easier testing, as the class can be isolated from the rest of the code and tested independently. It also facilitates easier maintenance of the code, as any changes to the decoding logic can be made in one place, rather than being scattered throughout the codebase.
 
-### _Encodes_file_
+### _Encodes File_
 
   - This class is responsible for parsing the data from a file containing link data and converting it into an array of Link objects. It uses the FileReader class to read the data from the file and then maps each row of data to a new Link object.
 
@@ -112,5 +114,8 @@
 </u>
 
 - Additional `count` methods by different parameters than year (website, day, time, etc)
+  - `Count` method is dynamic and sorts click counts depending on the argument passed
 - Different file input types (yaml, xml, etc.)
 - Writing a CSV for output to have a record
+- Substitute FileReader class for the API call
+- Caching each year's results (if this was an actual API call)
