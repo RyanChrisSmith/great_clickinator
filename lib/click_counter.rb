@@ -20,10 +20,10 @@ class ClickCounter
 
     sorted_clicks = clicks_hash.sort_by { |_url, count| -count }.to_h
 
-    sorted_objects = sorted_clicks.map do |url, count|
+    sorted_clicks.map do |url, count|
       { url => count }
     end
-    sorted_objects
+
   end
 
   private
